@@ -21,7 +21,6 @@ export default class MyPlugin extends Plugin {
 					file.extension == 'md' &&
 					file.deleted == false &&
 					this.settings.default_template.length > 0) {
-					console.log('NEW')
 					app.vault.adapter.write(file.path, this.settings.default_template)
 				}
 			}
@@ -65,7 +64,6 @@ class SampleSettingTab extends PluginSettingTab {
 				text.setPlaceholder('Enter your markdown')
 					.setValue(this.plugin.settings.default_template)
 					.onChange(async (value) => {
-						console.log('Secret: ' + value);
 						this.plugin.settings.default_template = value;
 						await this.plugin.saveSettings();
 					})
