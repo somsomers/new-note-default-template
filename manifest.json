@@ -1,9 +1,9 @@
 {
 	"id": "new-notes-default-template",
-	"name": "Default Template For New Notes",
+	"name": "New Notes Default Template",
 	"version": "0.0.13",
 	"minAppVersion": "0.15.0",
-	"description": "This is a simple plugin writes a markdown to newly created notes",
+	"description": "This is a simple plugin which writes a specified text to newly created notes",
 	"author": "somsomers",
 	"isDesktopOnly": false
 }
