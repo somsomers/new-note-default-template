@@ -1,4 +1,4 @@
-import {App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting} from 'obsidian';
+import {App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting, TFile} from 'obsidian';
 
 interface MyPluginSettings {
 	default_template: string;
@@ -14,11 +14,12 @@ export default class MyPlugin extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		this.registerEvent(this.app.vault.on('create', (file) => {
+		this.registerEvent(this.app.vault.on('create', (file : TFile) => {
 			if ('extension' in file) {
 				if (file.stat.ctime == file.stat.mtime &&
 					file.stat.size == 0 &&
 					file.extension == 'md' &&
+					//@ts-ignore
 					file.deleted == false &&
 					this.settings.default_template.length > 0) {
 					app.vault.adapter.write(file.path, this.settings.default_template)
